@@ -19,6 +19,7 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
       - run: echo "This is the integration step!"
+      - run: exit 2
 
   prod:
     runs-on: ubuntu-20.04
