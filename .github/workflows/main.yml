@@ -20,6 +20,19 @@ jobs:
     steps:
       - run: echo "This is the integration step!"
       - run: exit 2
+    continue-on-error: true
+
+  artifact:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Create a file
+        run: echo "Hello" > hello.txt
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: hello-artifact
+          path: hello.txt
 
   prod:
     runs-on: ubuntu-20.04
