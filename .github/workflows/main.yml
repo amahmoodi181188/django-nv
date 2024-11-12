@@ -17,10 +17,12 @@ jobs:
 
   integration:
     runs-on: ubuntu-20.04
+    continue-on-error: true  # Allows the whole job to pass even if it fails
     steps:
-      - run: echo "This is the integration step!"
-      - run: exit 2
-    continue-on-error: true
+      - name: Integration Step
+        run: echo "This is the integration step!"
+      - name: Simulate Failure
+        run: exit 2
 
   artifact:
     runs-on: ubuntu-20.04
@@ -29,7 +31,7 @@ jobs:
         run: echo "Hello" > hello.txt
 
       - name: Upload artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: hello-artifact
           path: hello.txt
