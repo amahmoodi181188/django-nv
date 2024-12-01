@@ -40,6 +40,7 @@ jobs:
             -Dsonar.host.url=${{ secrets.SONAR_HOST_URL }} \
             -Dsonar.login=${{ secrets.SONAR_TOKEN }} \
             -Dsonar.organization=amahmoodi181188
+            -Dsonar.externalIssuesReportPaths=/usr/src/sonar-report.json
 
       # Step 5: Upload SonarQube results as an artifact
       - name: Upload SonarQube Results
