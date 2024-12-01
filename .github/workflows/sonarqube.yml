@@ -39,12 +39,12 @@ jobs:
             -Dsonar.sources=/usr/src \
             -Dsonar.host.url=${{ secrets.SONAR_HOST_URL }} \
             -Dsonar.login=${{ secrets.SONAR_TOKEN }} \
-            -Dsonar.organization=amahmoodi181188
-            -Dsonar.report.export.path=/usr/src/sonar-report.json
+            -Dsonar.organization=amahmoodi181188 | tee onar-report.log
+
 
       # Step 5: Upload SonarQube results as an artifact
       - name: Upload SonarQube Results
         uses: actions/upload-artifact@v3
         with:
           name: SonarQube-Results
-          path: sonar-report.json
+          path: sonar-report.log
